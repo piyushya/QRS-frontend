@@ -2,7 +2,10 @@ const form = document.querySelector("#form-info");
 const loader = document.querySelector("#loader");
 const results = document.querySelector("#results");
 const overlay = document.querySelector("#overlay");
-const dowload = document.querySelector("#download-btn");
+const dowload = document.querySelector("#save-btn");
+const className = document.querySelector("#class-name")
+
+let blobUrl;
 
 // Take over form submission
 form.addEventListener("submit", (event) => {
@@ -17,27 +20,38 @@ async function sendData() {
     displayLoader();
     const response = await fetch("http://127.0.0.1:5000/fetch_results", {
       method: "POST",
-        // mode: "no-cors",
         // Set the FormData instance as the request body
       body: formData,
     });
-    console.log(response.status);
-    // 3sec simulated delay remove setTimeout
-    setTimeout(() => {
-        hideLoader();
-        displayResult();
-    }, 3000);
-    
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const blob = await response.blob();
+    blobUrl = URL.createObjectURL(blob);
+
+    hideLoader();
+    displayResult();
+
   } catch (e) {
-    console.error(e);
+    hideLoader();
+    alert(e.message);
   }
 }
 
-// download manually or remove this
+function saveFile(url, filename) {
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename || "file-name";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+// save csv file
 dowload.addEventListener("click", () => {
-
-    // send download request to server
-
+    saveFile(blobUrl, `result-${className.value}.csv`);
+    URL.revokeObjectURL(blobUrl);
     hideResult();
     form.reset();
 })

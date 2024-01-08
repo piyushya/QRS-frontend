@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quick Result Analysis</title>
+    <title>Quick Result System</title>
 
     <!-- reset useragent styling -->
     <link rel="stylesheet" href="./stylesheets/index.css">
@@ -19,7 +19,7 @@
         <section class="college-info">
             <!-- College info section -->
             <div class="jss-logo-cont">
-                <a href="#"><img src="./images/jss.png" alt="jssaten logo"></a>
+                <a href="https://jssaten.ac.in/"><img src="./images/jss.png" alt="jssaten logo"></a>
             </div>
             <div class="college-text-cont">
                 <p>JSS MAHAVIDYAPEETHA</p>
@@ -30,24 +30,24 @@
             </div>
             <div class="affiliated-logos-cont">
                 <div class="affiliated-logo-row">
-                    <a href="#"><img class="affiliated-logo" src="./images/nba.png" alt="nba logo"></a>
-                    <a href="#"><img class="affiliated-logo" src="./images/aicte.png" alt="aicte logo"></a>
+                    <a href="https://www.nbaind.org/"><img class="affiliated-logo" src="./images/nba.png" alt="nba logo"></a>
+                    <a href="https://www.aicte-india.org/"><img class="affiliated-logo" src="./images/aicte.png" alt="aicte logo"></a>
                 </div>
                 <div class="affiliated-logo-row">
-                    <a href="#"><img class="affiliated-logo" src="./images/nirf.png" alt="nirf logo"></a>
-                    <a href="#"><img class="affiliated-logo" src="./images/qs.png" alt="qs logo"></a>
+                    <a href="https://www.nirfindia.org/Home"><img class="affiliated-logo" src="./images/nirf.png" alt="nirf logo"></a>
+                    <a href="https://www.topuniversities.com/qs-world-university-rankings"><img class="affiliated-logo" src="./images/qs.png" alt="qs logo"></a>
                 </div>
             </div>
         </section>
         <h1>Quick Result System (QRS)</h1>
     </header>
     <main>
-        <form id="form-info">
+        <form id="form-info" enctype="multipart/form-data">
             <div>
                 <label for="class-name" class="label-text">
                     Class Name
                 </label>
-                <input type="text" name="class_name" id="class-name" placeholder="CS2" required />
+                <input type="text" name="class_name" id="class-name" required />
             </div>
             <div>
                 <label for="semester-input" class="label-text">
@@ -88,9 +88,8 @@
     <!-- hidden results component -->
     <div id="results">
         <p>Results Recieved Succesfully</p>
-        <p>Dowload will begin shortly, if not click the button below to dowload manually</p>
-        <button type="button" id="download-btn">
-            Download Results
+        <button type="button" id="save-btn">
+            Save Results
         </button>
     </div>
 
